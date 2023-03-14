@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabel Penilaian Mahasiswa</title>
+</head>
+<body>
+    <h2>Penilaian Mahasiswa</h2>
+	<table border="1" >
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Nama</th>
+				<th>Nilai</th>
+				<th>Grade</th>
+				<th>Predikat</th>
+			</tr>
+		</thead>
+		<tbody>
+			<script type="text/javascript">
+				let mahasiswa = [
+					{nama: 'Deni', nilai: 95},
+					{nama: 'Budi', nilai: 80},
+					{nama: 'Cici', nilai: 70},
+					{nama: 'Andi', nilai: 60},
+					{nama: 'Eva', nilai: 50},
+                    {nama: 'Tia', nilai: 90}
+				];
+
+				function getGrade(nilai) {
+					let grade;
+					if (nilai >= 90) {
+						grade = 'A';
+					} else if (nilai >= 80) {
+						grade = 'B';
+					} else if (nilai >= 70) {
+						grade = 'C';
+					} else if (nilai >= 60) {
+						grade = 'D';
+					} else {
+						grade = 'E';
+					}
+					return grade;
+				}
+
+				function getPredikat(grade) {
+					let predikat;
+					switch(grade) {
+						case 'A':
+							predikat = 'Sangat Baik';
+							break;
+						case 'B':
+							predikat = 'Baik';
+							break;
+						case 'C':
+							predikat = 'Cukup';
+							break;
+						case 'D':
+							predikat = 'Kurang';
+							break;
+						case 'E':
+							predikat = 'Sangat Kurang';
+							break;
+						default:
+							predikat = '-';
+							break;
+					}
+					return predikat;
+				}
+
+				function getWarna(grade) {
+					let warna;
+					switch(grade) {
+						case 'A':
+							warna = 'green';
+							break;
+						case 'B':
+							warna = 'lightgreen';
+							break;
+						case 'C':
+							warna = 'yellow';
+							break;
+						case 'D':
+							warna = 'orange';
+							break;
+						case 'E':
+							warna = 'red';
+							break;
+						default:
+							warna = 'white';
+							break;
+					}
+					return warna;
+				}
+
+				for (let i = 0; i < mahasiswa.length; i++) {
+					let student = mahasiswa[i];
+					let grade = getGrade(student.nilai);
+					let predikat = getPredikat(grade);
+					let warna = getWarna(grade);
+
+					document.write(`
+						<tr style="background-color: ${warna}">
+							<td>${i+1}</td>
+							<td>${student.nama}</td>
+							<td>${student.nilai}</td>
+							<td>${grade}</td>
+							<td>${predikat}</td>
+						</tr>
+					`);
+				}
+			</script>
+		</tbody>
+	</table>
+</body>
+</html>
